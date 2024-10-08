@@ -1,0 +1,66 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Tasks" %>
+<h1 style="text-align: center">Task List</h1>
+
+<div style="text-align: right; margin-bottom: 30px;">
+  <%= link_to "Go to Category", categories_path, style: "padding: 10px 20px; background-color: #008CBA; color: white; text-decoration: none; border-radius: 4px;" %>
+</div>
+
+<div style="text-align: right; margin-bottom: 20px;">
+  <%= link_to "Sort by Status (Asc)", tasks_path(order: 'status_asc'), style: "padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 4px;" %>
+  <%= link_to "Sort by Status (Desc)", tasks_path(order: 'status_desc'), style: "padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 4px;" %>
+</div>
+
+<div style="margin-bottom: 20px;">
+  <%= form_with url: tasks_path, method: :get, local: true do %>
+    <div style="display: inline-block; margin-right: 10px;">
+      <%= label_tag :category, "Filter by Category" %>
+      <%= select_tag :category, options_from_collection_for_select(Category.all, :id, :name, params[:category]), include_blank: true %>
+    </div>
+    <div style="display: inline-block; margin-right: 10px;">
+      <%= label_tag :status, "Filter by Status" %>
+      <%= select_tag :status, options_for_select(Task.statuses.keys.map { |status| [status.humanize, status] }, params[:status]), include_blank: true %>
+    </div>
+    <%= submit_tag "Filter", style: "padding: 10px 20px; background-color: #008CBA; color: white; text-decoration: none; border-radius: 4px;" %>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task NO</th>
+      <th>Task Name</th>
+      <th>Category</th>
+      <th>Status</th>
+      <th>Completed</th>
+      <th>Toggle Completed</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.id %></td>
+        <td><%= task.name %></td>
+        <td><%= task.category.name %></td>
+        <td><%= task.status ? task.status.humanize : "Not set" %></td>
+        <td><%= task.is_completed? ? 'Yes' : 'No' %></td>
+          <td>
+            <%= button_to 'Toggle Completed', toggle_completed_task_path(task), method: :patch, remote: true %>
+          </td>
+          <td style="display: flex;">
+            <%= link_to 'Show', task_path(task), style: "background-color: #17a2b8; color: white; padding: 10px 20px; margin: 10px 5px ; text-decoration: none; border-radius: 5px;display: inline-block;" %>
+
+            <%= link_to 'Edit', edit_task_path(task), style: "background-color: #FFA500; color: white; padding: 10px 20px; margin:10px 5px; text-decoration: none; border-radius: 5px;display: inline-block;" %>
+
+            <%= button_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' }, style: "background-color: #FF5733; color: white; padding: 15px 20px;margin:10px 5px; text-decoration: none; border-radius: 5px; display:inline" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <%= link_to 'New Task', new_task_path, style: "background-color: green; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;" %>
+  </div>

@@ -1,0 +1,44 @@
+<% content_for :title, "New Task" %>
+
+<h1 style="text-align: center; margin-bottom: 20px;">Create New Todo</h1>
+
+<div style="width: 50%; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+  <%= form_with(model: @task, local: true) do |f| %>
+    
+    <div class="form-group" style="display: flex; align-items: center; margin-bottom: 20px;">
+      <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">
+        <%= f.label :name, "Task Name" %>
+      </div>
+      <div style="flex: 1;">
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter task name", style: "padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%;" %>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: flex; align-items: center; margin-bottom: 20px;">
+      <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">
+        <%= f.label :category_id, "Category" %>
+      </div>
+      <div style="flex: 1;">
+        <%= f.collection_select :category_id, @categories, :id, :name, prompt: "Select Category", class: "form-control", style: "padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; height:40px" %>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: flex; align-items: center; margin-bottom: 20px;">
+      <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">
+        <%= f.label :status, "Status" %>
+      </div>
+      <div style="flex: 1;">
+        <%= f.select :status, Task.statuses.keys.map { |status| [status.humanize, status] }, {}, class: "form-control", style: "padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%;" %>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-top: 20px; text-align: center;">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+
+    <div class="form-group" style="text-align: center; margin-top: 20px;">
+      <%= link_to "Back", tasks_path, style: "padding: 10px 20px; background-color: #008CBA; color: white; text-decoration: none; border-radius: 4px;" %>
+    </div>
+    
+  <% end %>
+</div>

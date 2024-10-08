@@ -1,0 +1,26 @@
+<% content_for :title, "Editing Category" %>
+
+<h1 style="text-align: center; margin-bottom: 20px;">Edit Category</h1>
+
+<div style="width: 50%; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+  <%= form_with(model: @category, local: true) do |f| %>
+
+    <div class="form-group" style="display: flex; align-items: center; margin-bottom: 20px;">
+      <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">
+        <%= f.label :name, "Category Name", style: "font-family: 'Poppins', sans-serif;" %>
+      </div>
+      <div style="flex: 1;">
+        <%= f.text_field :name, style: "width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" %>
+      </div>
+    </div>
+
+    <div class="form-group" style="text-align: center;">
+      <%= f.submit "Save Category", style: "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-family: 'Poppins', sans-serif;" %>
+    </div>
+
+  <% end %>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <%= link_to "Back", categories_path, style: "padding: 10px 20px; background-color: #008CBA; color: white; text-decoration: none; border-radius: 4px;" %>
+  </div>
+</div>

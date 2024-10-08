@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Categories" %>
+
+<h1 style="text-align: center;">Categories</h1>
+<div style="text-align: right; margin-bottom: 20px;">
+  <%= link_to "Go to Task", tasks_path, style: "padding: 10px 20px; background-color: #008CBA; color: white; text-decoration: none; border-radius: 4px;" %>
+</div>
+
+<table id="categories" style="width: 100%; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #ddd; padding: 8px;">Category NO</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Category Name</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= category.id %></td>
+        <td style="border: 1px solid #ddd; padding: 8px;"><%= category.name %></td>
+        <td style="border: 1px solid #ddd; padding: 8px; display:flex;">
+          <%= link_to 'Show', category_path(category), style: "background-color: #17a2b8; color: white; padding: 10px 20px; margin: 10px 5px ; text-decoration: none; border-radius: 5px;display: inline-block;" %>
+          <%= link_to "Edit", edit_category_path(category), style: "background-color: #FFA500; color: white; padding: 10px 20px; margin:10px 5px; text-decoration: none; border-radius: 5px;display: inline-block;" %>
+          <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure you want to delete this category?' }, style: "background-color: #FF5733; color: white; padding: 15px 20px;margin:10px 5px; text-decoration: none; border-radius: 5px; display:inline" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New category", new_category_path, style: "display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: green; color: white; text-decoration: none; border-radius: 4px;" %>

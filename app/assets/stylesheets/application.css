@@ -1,0 +1,121 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+/* app/assets/stylesheets/application.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+   
+  }
+  
+  th {
+    background-color: #00995f;
+    color: white;
+  }
+  
+  button, input[type="submit"] {
+    background-color: #0d9911;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover, input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+.form-group {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+  
+.form-control {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: gray;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+opacity: 0.8;
+}
+
+.task-button {
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.task-button.edit {
+    background-color: blue;
+}
+
+.task-button.back {
+    background-color: gray;
+}
+
+.task-button.delete {
+    background-color: red;
+}

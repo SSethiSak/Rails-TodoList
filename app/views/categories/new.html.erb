@@ -1,0 +1,13 @@
+<% content_for :title, "New Category" %>
+
+<h1 style="text-align: center; margin-bottom: 20px;">New Category</h1>
+
+<div style="width: 50%; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+  <%= render "form", category: @category %>
+
+  <br>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <%= link_to "Back", categories_path, style: "padding: 10px 20px; background-color: #008CBA; color: white; text-decoration: none; border-radius: 4px;" %>
+  </div>
+</div>
